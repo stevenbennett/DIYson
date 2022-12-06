@@ -9,7 +9,7 @@ import pwmio
 from digitalio import DigitalInOut, Direction, Pull
 from adafruit_debouncer import Debouncer
 
-pwm = pwmio.PWMOut(board.D0, frequency=5000, duty_cycle=0)  # output on LED pin with default of 500Hz
+pwm = pwmio.PWMOut(board.D0, frequency=1000, duty_cycle=0)
 
 pin1 = DigitalInOut(board.D2)
 pin1.direction = Direction.INPUT
