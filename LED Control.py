@@ -1,41 +1,74 @@
 import time
 import board
 import pwmio
+import touchio
 from digitalio import DigitalInOut, Direction, Pull
 from adafruit_debouncer import Debouncer
 
-pwm = pwmio.PWMOut(board.D0, frequency=1000, duty_cycle=0)
+pwm = pwmio.PWMOut(board.RX, frequency=1000, duty_cycle=0)
 
-pin1 = DigitalInOut(board.D2)
-pin1.direction = Direction.INPUT
-pin1.pull = Pull.UP
+# increase brightness
+pin1 = board.TX
+switch1 = touchio.TouchIn(pin1)
+switch1_debounced = Debouncer(switch1)
 
-pin2 = DigitalInOut(board.D3)
-pin2.direction = Direction.INPUT
-pin2.pull = Pull.UP
+# decrease brightness
+pin2 = board.D3
+switch2 = touchio.TouchIn(pin2)
+switch2_debounced = Debouncer(switch2)
 
-switch1 = Debouncer(pin1)
-switch2 = Debouncer(pin2)
+# toggle power
+pin3 = board.A1
+powerSwitch = touchio.TouchIn(pin3)
+powerSwitch_debounced = Debouncer(powerSwitch)
 
+power = False
 step = 25
 brightness = 25
 
+
+def fadeBetween(start, end, direction):
+    distance = abs(start - end)
+    increment = distance / step
+    for cycle in range(start, end, direction):
+        pwm.duty_cycle = int(cycle / 100 * 65535)
+        time.sleep(.25 / increment)
+
+
 while True:
-    pwm.duty_cycle = int(brightness / 100 * 65535)
 
-    switch1.update()
-    if switch1.fell:
-        if brightness != 100:
-            brightness = brightness+step
-            print("brightness increased to ", brightness)
-        elif brightness == 100:
-            print("reached max brightness: (", brightness, ")")
+    powerSwitch_debounced.update()
+    if powerSwitch_debounced.rose:
+        fadeBetween(0, brightness, 1)
+        power = True
+    else:
+        pass
 
-    switch2.update()
-    if switch2.fell:
-        if brightness != 0:
-            brightness = brightness-step
-            print("brightness decreased to ", brightness)
-        elif brightness == 0:
-            print("reached min brightness: (", brightness, ")")
+    while power:
+        pwm.duty_cycle = int(brightness / 100 * 65535)
 
+        powerSwitch_debounced.update()
+        if powerSwitch_debounced.rose:
+            fadeBetween(brightness, 0, -1)
+            power = False
+        else:
+            pass
+
+        switch1_debounced.update()
+        if switch1_debounced.rose:
+            if brightness != 100:
+                fadeBetween(brightness, (brightness + step), 1)
+                brightness = brightness + step
+            elif brightness == 100:
+        else:
+            pass
+
+        switch2_debounced.update()
+        if switch2_debounced.rose:
+            if brightness != step:
+                fadeBetween(brightness, (brightness - step), -1)
+                brightness = brightness - step
+            elif brightness == 0:
+        else:
+            pass
+    time.sleep(0.01)
