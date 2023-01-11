@@ -1,8 +1,8 @@
 Part Name,Quantity,Category,Link,European supplier,Note,Unit Cost (USD),Total Cost (USD)
 C-Clamp,1,Structure/Motion,https://amzn.to/3c4k5Et,,Any small c-clamp will work,$15.10,$15.10
 GT2-2M Timing Belt (By the Foot),2,Structure/Motion,https://openbuildspartstore.com/gt2-2m-timing-belt-by-the-foot/?ref=_2E7m4SXRIy8t,https://vslot-poland.com/timing-belt-GT2,,$2.49,$4.98
-Horizontal Rail (250mm),1,Structure/Motion,https://openbuildspartstore.com/v-slot-20x20-linear-rail/?ref=_2E7m4SXRIy8t,https://vslot-poland.com/en_US/p/Aluminium-profile-2020-V-SLOT-Black-Anodized-250mm/38,,$3.29,$3.29
-Vertical Rail (250mm),1,Structure/Motion,https://openbuildspartstore.com/v-slot-20x40-linear-rail/?ref=_2E7m4SXRIy8t,https://vslot-poland.com/en_US/p/Aluminium-profile-2020-V-SLOT-Black-Anodized-250mm/38,,$3.99,$3.99
+Horizontal Rail (500mm),1,Structure/Motion,https://openbuildspartstore.com/v-slot-20x20-linear-rail/?ref=_2E7m4SXRIy8t,https://vslot-poland.com/en_US/p/Aluminium-profile-2020-V-SLOT-Black-Anodized-250mm/38,,$3.29,$3.29
+Vertical Rail (500mm),1,Structure/Motion,https://openbuildspartstore.com/v-slot-20x40-linear-rail/?ref=_2E7m4SXRIy8t,https://vslot-poland.com/en_US/p/Aluminium-profile-2020-V-SLOT-Black-Anodized-250mm/38,,$3.99,$3.99
 Xtreme Solid V Wheel Kit,6,Structure/Motion,https://openbuildspartstore.com/xtreme-solid-v-wheel-kit/?ref=_2E7m4SXRIy8t,https://vslot-poland.com/xtreme-solid-v-wheel-kit,"Black Delrin or V-wheel kits can be substituted",$6.99,$41.94
 LED,1,Lighting,https://www.mouser.com/ProductDetail/Cree-LED/CXA1512-0000-000F0YJ430F?qs=G0uBbFPHMul3bnQg5K8bGQ%3D%3D,https://eu.mouser.com/ProductDetail/Cree-LED/CXA1512-0000-000F0YJ430F?qs=G0uBbFPHMul3bnQg5K8bGQ%3D%3D,,$5.60,$5.60
 LED Housing,1,Lighting,https://www.mouser.com/ProductDetail/Ledil/F15256_HEKLA-SOCKET-D?qs=o2C7DKDMuStSi5P8paemqw%3D%3D,https://eu.mouser.com/ProductDetail/Ledil/F15256_HEKLA-SOCKET-D?qs=o2C7DKDMuStSi5P8paemqw%3D%3D,,$1.37,$1.37
@@ -24,3 +24,4 @@ Super Low Profile Nyloc Nut (pack of 4),2,Hardware,https://www.getfpv.com/m5-bla
 Adafruit QT Py - SAMD21,1,Electronics,https://www.adafruit.com/qtpy?gclid=CjwKCAiAh9qdBhAOEiwAvxIokyn6veRmxlDGm5_lQyXC6bfELO_HvTuC_HDXWB-l09hSkp705wz91xoCjs0QAvD_BwE,https://eu.mouser.com/ProductDetail/Adafruit/4600?qs=hd1VzrDQEGi752M4exorSA%3D%3D,,$7.50,$7.50
 MPM3610 5V Buck Converter Breakout,1,Electronics,https://www.adafruit.com/product/4739,,,$5.95,$5.95
 Heatpipe,1,Cooling,https://www.mouser.com/ProductDetail/984-HPF5L300S13W236,https://nl.mouser.com/ProductDetail/984-HPF5L300S13W236,,$14.02,$14.02
+Lighting PCB Pogo Pins, 3, Electronics, https://www.digikey.com/en/products/detail/mill-max-manufacturing-corp/807-22-001-10-001101/5418772,https://www.digikey.nl/nl/products/detail/mill-max-manufacturing-corp/807-22-001-10-001101/5418772?s=N4IgTCBcDaIBwAYDsBaMYUIQRhdhmO%2B2IAugL5A,,$1.00,$1.00
