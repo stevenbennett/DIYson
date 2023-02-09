@@ -51,15 +51,13 @@ while True:
             power = False
 
         switch1_debounced.update()
-        if switch1_debounced.rose:
-            if brightness != 100:
-                fadeBetween(brightness, (brightness + step), 1)
-                brightness = brightness + step
+        if switch1_debounced.rose and brightness != 100:
+            fadeBetween(brightness, (brightness + step), 1)
+            brightness = brightness + step
 
         switch2_debounced.update()
-        if switch2_debounced.rose:
-            if brightness != step:
-                fadeBetween(brightness, (brightness - step), -1)
-                brightness = brightness - step
+        if switch2_debounced.rose and brightness != step:
+            fadeBetween(brightness, (brightness - step), -1)
+            brightness = brightness - step
 
     time.sleep(0.01)
