@@ -41,8 +41,6 @@ while True:
     if powerSwitch_debounced.rose:
         fadeBetween(0, brightness, 1)
         power = True
-    else:
-        pass
 
     while power:
         pwm.duty_cycle = int(brightness / 100 * 65535)
@@ -51,24 +49,15 @@ while True:
         if powerSwitch_debounced.rose:
             fadeBetween(brightness, 0, -1)
             power = False
-        else:
-            pass
 
         switch1_debounced.update()
-        if switch1_debounced.rose:
-            if brightness != 100:
-                fadeBetween(brightness, (brightness + step), 1)
-                brightness = brightness + step
-            elif brightness == 100:
-        else:
-            pass
+        if switch1_debounced.rose and brightness != 100:
+            fadeBetween(brightness, (brightness + step), 1)
+            brightness = brightness + step
 
         switch2_debounced.update()
-        if switch2_debounced.rose:
-            if brightness != step:
-                fadeBetween(brightness, (brightness - step), -1)
-                brightness = brightness - step
-            elif brightness == 0:
-        else:
-            pass
+        if switch2_debounced.rose and brightness != step:
+            fadeBetween(brightness, (brightness - step), -1)
+            brightness = brightness - step
+
     time.sleep(0.01)
