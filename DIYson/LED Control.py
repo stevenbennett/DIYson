@@ -26,16 +26,15 @@ power = False
 step = 25
 brightness = 25
 
-
 def fadeBetween(start, end, direction):
     distance = abs(start - end)
     increment = distance / step
     for cycle in range(start, end, direction):
         pwm.duty_cycle = int(cycle / 100 * 65535)
-        time.sleep(.25 / increment)
-
-
+        time.sleep(.025 / increment)
+        
 while True:
+    pwm.duty_cycle = 0
 
     powerSwitch_debounced.update()
     if powerSwitch_debounced.rose:
