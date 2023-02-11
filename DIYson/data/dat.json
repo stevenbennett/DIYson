@@ -1,0 +1,11 @@
+{
+    "ambient": {
+        "low": 0,
+        "high": 100
+    },
+    "brightness": {
+        "low": 0,
+        "high": 100
+    }
+
+}

@@ -3,6 +3,8 @@ from datetime import datetime, timezone
 import time
 from suntime import Sun, SunTimeException #pip install suntime
 import math
+import json
+from data.handle_data import Data
 try: 
     import board
     import pwmio
@@ -149,6 +151,8 @@ class Hardware:
         for cycle in range(start, end, direction):
             self.pwm.duty_cycle = int(cycle / 100 * 65535)
             time.sleep(.25 / increment)
+        Data.append_list(0,end)
+
     def get_distance(self):
         #docs: https://github.com/pimoroni/vl53l1x-python
         if self.Tof == 'VL53L1X':
@@ -162,6 +166,7 @@ class Hardware:
             # 3 = Long Range
             distance_in_mm = tof.get_distance()
             tof.stop_ranging()  # Stop ranging
+            Data.append_list(2,distance_in_mm)
             return distance_in_mm
         else:
             return None
@@ -173,6 +178,7 @@ class Hardware:
             ltr559 = LTR559()
             ltr559.update_sensor()
             lux = ltr559.get_lux()
+            Data.append_list(1,lux)
             return lux
         else:
             return None
@@ -186,13 +192,14 @@ class Hardware:
             return prox
         else: 
             return None
-        
+    def set_inside_brightness(self):
+        brightness = self.get_ambient_light()
+        #y = (1/0.8)*brightness
     async def get_presence(self):
         if self.ALs == 'LTR-559':
             from ltr559 import LTR559
             ltr559 = LTR559()
         pass
-
 
 light = Solar()
 print(light.cct(),'cct')
