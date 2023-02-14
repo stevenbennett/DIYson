@@ -23,3 +23,7 @@ Hardware that is ideal/required are listed below:
   * Pimoroni version is great, but bulky
 * LTR-559 Ambient Light Sensor
   * Again, Pimoroni version is great for development, but bulky
+## Future additions to Hardware:
+* PCB Intergrating sensors
+* Dual PCB that splits main LED/microcontroller and sensors
+* Architecture change from Adafruit QT Py to a RP2040 Board. eg Pimoroni PIM558
