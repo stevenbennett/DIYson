@@ -130,28 +130,51 @@ class Solar:
 class Hardware:
     def __init__(self): ##### MADE FOR RASPI #####
         ##INFO##
-        self.Tof = 'VL53L1X' #time of flight sensor 
-        self.ALs = 'LTR-559' #ambient light sensor
-        self.prx = 'LTR-559' #proximity sensor
+        self.Tof = '' # VL53L1X time of flight sensor 
+        self.ALs = '' # LTR-559 ambient light sensor
+        self.prx = '' # LTR-559 proximity sensor
+
         ##VALUES##
         self.power = False
         self.step = 25
         self.brightness = 25
+        self.dist_to_bri = [100,20]
+
         ##PINS##
         self.pwm = pwmio.PWMOut(board.RX, frequency=1000, duty_cycle=0)
         self.pin1 = board.TX
         self.pin2 = board.D3
         self.pin3 = board.A1
-
+    def setup(self,i2cbus:list):
+        if self.Tof == 'VL53L1X':
+            import VL53L1X
+            tof = VL53L1X.VL53L1X(i2c_bus=1, i2c_address=i2cbus[0]) #defat i2c address: 0x29
+            tof.open()
+        if self.ALs == 'LTR-559':
+            from ltr559 import LTR559
+            ALs = LTR559()
+            ALs.update_sensor()
+        if self.prx == 'LTR-559':
+            from ltr559 import LTR559
+            prx = LTR559()
+            prx.update_sensor()
+        return tof,ALs,prx
+    def check_values(self,value):
+        if value < 0:
+            value = 0
+        elif value > 100:
+            value = 100
+        return value
     def set_cct(self,cct):
-        pass
+        pass #add code relevent to hardware
+
     def set_brightness(self,start, end, direction):
         distance = abs(start - end)
         increment = distance / self.step
         for cycle in range(start, end, direction):
             self.pwm.duty_cycle = int(cycle / 100 * 65535)
             time.sleep(.25 / increment)
-        Data.append_list(0,end)
+        self.brightness = end
 
     def get_distance(self):
         #docs: https://github.com/pimoroni/vl53l1x-python
@@ -166,7 +189,6 @@ class Hardware:
             # 3 = Long Range
             distance_in_mm = tof.get_distance()
             tof.stop_ranging()  # Stop ranging
-            Data.append_list(2,distance_in_mm)
             return distance_in_mm
         else:
             return None
@@ -178,13 +200,12 @@ class Hardware:
             ltr559 = LTR559()
             ltr559.update_sensor()
             lux = ltr559.get_lux()
-            Data.append_list(1,lux)
             return lux
         else:
             return None
         
     def get_proximity(self):
-        if self.ALs == 'LTR-559':
+        if self.prx == 'LTR-559':
             from ltr559 import LTR559
             ltr559 = LTR559()
             ltr559.update_sensor()
@@ -192,14 +213,29 @@ class Hardware:
             return prox
         else: 
             return None
-    def set_inside_brightness(self):
-        brightness = self.get_ambient_light()
-        #y = (1/0.8)*brightness
-    async def get_presence(self):
-        if self.ALs == 'LTR-559':
-            from ltr559 import LTR559
-            ltr559 = LTR559()
-        pass
+        
+    async def set_inside_brightness(self,type):
+        if type == 'ambient':
+            brightness = self.get_ambient_light()
+            highest_brightness = Data.find(['brightness', 'high'])
+            brightness = (((-1*(1/100)*brightness**2)+100)/highest_brightness)*100 #calculate the brightness in a percentage using the ambient light sensor
+            return self.check_values(brightness)
+        elif type == 'proximity':
+            distance = self.get_distance()
+            if distance != None:
+                brightness = (self.dist_to_bri[0]/self.dist_to_bri[1])*distance
+                return self.check_values(brightness)
+        elif type == 'dual':
+            ambient = self.set_inside_brightness('ambient')
+            proximity = self.set_inside_brightness('proximity')
+            brightness = (ambient+proximity)/2
+            return self.check_values(brightness)
+        elif type == 'tri':
+            ambient = self.set_inside_brightness('ambient')
+            proximity = self.set_inside_brightness('proximity')
+            brightness = (ambient+proximity+self.brightness)/3
+            return self.check_values(brightness)
+
 
 light = Solar()
 print(light.cct(),'cct')
