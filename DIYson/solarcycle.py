@@ -127,6 +127,9 @@ class Solar:
             cct = self.max_color_temp
         return(int(cct))
     
+    def age_intensity_multiplier(self,age):
+        return max(1,((1/382.5)*(min(age,100)**2))-1.4)
+    
 class Hardware:
     def __init__(self): ##### MADE FOR RASPI #####
         ##INFO##
@@ -154,6 +157,10 @@ class Hardware:
             from ltr559 import LTR559
             ALs = LTR559()
             ALs.update_sensor()
+        elif self.prx == 'VEML7700':
+            import adafruit_veml7700 #pip3 install adafruit-circuitpython-veml7700import adafruit_veml7700
+            i2c = board.I2C()  # uses board.SCL and board.SDA
+            ALs = adafruit_veml7700.VEML7700(i2c)
         if self.prx == 'LTR-559':
             from ltr559 import LTR559
             prx = LTR559()
@@ -201,6 +208,9 @@ class Hardware:
             ltr559.update_sensor()
             lux = ltr559.get_lux()
             return lux
+        elif self.ALs == 'VEML7700':
+            ##code from adafruit website: https://learn.adafruit.com/adafruit-veml7700/python-circuitpython
+            pass
         else:
             return None
         
