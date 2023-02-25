@@ -53,10 +53,10 @@ Orientation: Small screw hole on build plate
 Supports: None  
 Settings: Default  
 
-**End Cap (optional):**  
+**Pulley Mount:**  
 Orientation: As installed (linear rail inserts on build plate)  
 Supports: On build plate  
 Settings: Default  
 
-**End Cap (optional):**  
+**LED Holder Options:**  
 Settings vary based on design, but the DIYson Express logo prints best with a .25mm nozzle. I print the Ulanzi L2 holder upside down (with the logo side on the build plate) and uses supports on the build plate to support the opening which reveal the buttons.  
