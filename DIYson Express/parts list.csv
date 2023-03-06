@@ -1,23 +1,23 @@
-Part Name,Quantity,Link,Note,Unit Cost,Total Cost
-C-Clamp,1,https://amzn.to/3c4k5Et,Any small c-clamp will work,$12.98,$12.98
-Open Builds Low Profile Screws M5 x 8mm,1,https://openbuildspartstore.com/low-profile-screws-m5-10-pack-/?ref=_2E7m4SXRIy8t,"10 pack, 5 needed for mounting the LED holder and the end cap to the horizontal rail",$0.99,$0.99
-Open Builds 40mm Aluminum Spacer,1,https://openbuildspartstore.com/aluminum-spacers-10-pack/?ref=_2E7m4SXRIy8t,"10 pack, 1 used to connect to desk mount",$7.89,$7.89
-Open Builds 500mm Linear Rail,2,https://openbuildspartstore.com/v-slot-20x20-linear-rail/?ref=_2E7m4SXRIy8t,,$5.49,$10.98
-Open Builds 6mm Aluminum Spacer,1,https://openbuildspartstore.com/aluminum-spacers-10-pack/?ref=_2E7m4SXRIy8t,"10 pack, 4 used in mounting wheels to carriage",$3.39,$3.39
-Open Builds Xtreme Solid V Wheel Kit,6,https://openbuildspartstore.com/xtreme-solid-v-wheel-kit/?ref=_2E7m4SXRIy8t,,$6.99,$41.94
-Open Builds Low Profile Screws M5 x 25mm,1,https://openbuildspartstore.com/low-profile-screws-m5-10-pack-/?ref=_2E7m4SXRIy8t,"10 pack, 6 needed for mounting wheels to carriage",$1.39,$1.39
-Open Builds Low Profile Screws M5x15mm,1,https://openbuildspartstore.com/low-profile-screws-m5-10-pack-/?ref=_2E7m4SXRIy8t,"10 pack, 2 needed for mounting base and pulley mount to vertical rail",$1.19,$1.19
-Open Builds 6mm Eccentric Spacer,2,https://openbuildspartstore.com/eccentric-spacer/?ref=_2E7m4SXRIy8t,,$1.99,$3.98
-Low Profile Lock Nuts,2,https://www.readymaderc.com/products/details/rmrc-m5-cw-aluminum-low-profile-lock-nut-black-4pc,Optional (V Wheel kits come with standard silver lock nuts and you will have extra black ones from the pulley assembly),$2.59,$5.18
-Open Builds Spring Loaded Tee Nuts,4,https://openbuildspartstore.com/spring-loaded-tee-nuts/?ref=_2E7m4SXRIy8t,Used to attach LED holder to horizontal rail,$1.29,$5.16
-6mm Idler Pulley,1,https://amzn.to/3AthhKy,10 pack,$11.99,$11.99
-M3 x 16mm Socket Head Screw,1,https://amzn.to/40agf0J,You only need one M3 screw for the whole lamp so if you don’t already have one your most affordable option is to get one from your local hardware store.,$11.99,$11.99
-Assorted M2 Screws,1,https://amzn.to/3HFifqF,"Six 6mm and two 4mm screws are all you need. Used to mount belt to the carriage (4mm M2), the belt to the counterweight (6mm M2), and the lid to the counterweight (6mm M2)",$15.99,$15.99
-M3 Nylon Lock Nuts,1,https://amzn.to/3wFtVU4,"Pack of 50, need one for the pulley mounted at the top of the vertical rail",$7.49,$7.49
-GT2-2M Timing Belt,2,https://openbuildspartstore.com/gt2-2m-timing-belt-by-the-foot/?ref=_2E7m4SXRIy8t,"Sold by the foot, cut down to 16.5 inches",$2.49,$4.98
-Lead Shot Balls,1,https://amzn.to/3kHrHAE,Please wear gloves while handling and wash your hands afterwards,$24.99,$24.99
-Open Builds Linear Rail End Cap,1,https://openbuildspartstore.com/end-cap/?ref=_2E7m4SXRIy8t,Optional (can be 3D printed),$1.99,$1.99
-ULANZI L2 Bi-Color Light,1,https://amzn.to/3XTvSIA,Get two if you want 100% uptime,$36.99,$36.99
-10x5x2 Neodymium Magnets,1,https://amzn.to/3wZxsfU,Pack of 100,$7.99,$7.99
-Duramic Matte Black Filament,1,https://amzn.to/3HiAHnv,Use whatever you like but this is my personal favorite,$19.99,$19.99
-Right Angle USB C Adapter,1,https://amzn.to/3DqzcT7,Optional (only needed to make charging base),$10.95,$10.95
+Part Name,Quantity,Included in hardware booster kit?,Link,Note,Unit Cost,Total Cost
+Open Builds 40mm Aluminum Spacer,1,Yes,https://openbuildspartstore.com/aluminum-spacers-10-pack/?ref=_2E7m4SXRIy8t,"10 pack, 1 used to connect to desk mount",$7.89,$7.89
+Open Builds Low Profile Screws M5x15mm,1,Yes,https://openbuildspartstore.com/low-profile-screws-m5-10-pack-/?ref=_2E7m4SXRIy8t,"10 pack, 2 needed for mounting base and pulley mount to vertical rail",$1.19,$1.19
+Low Profile Lock Nuts,2,Yes,https://www.readymaderc.com/products/details/rmrc-m5-cw-aluminum-low-profile-lock-nut-black-4pc,Optional (V Wheel kits come with standard silver lock nuts and you will have extra black ones from the pulley assembly),$2.59,$5.18
+6mm Idler Pulley,1,Yes,https://amzn.to/3AthhKy,10 pack,$11.99,$11.99
+M3 x 16mm Socket Head Screw,1,Yes,https://amzn.to/40agf0J,You only need one M3 screw for the whole lamp so if you don’t already have one your most affordable option is to get one from your local hardware store.,$11.99,$11.99
+Assorted M2 Screws,1,Yes,https://amzn.to/3HFifqF,"Six 6mm and two 4mm screws are all you need. Used to mount belt to the carriage (4mm M2), the belt to the counterweight (6mm M2), and the lid to the counterweight (6mm M2)",$15.99,$15.99
+M3 Nylon Lock Nuts,1,Yes,https://amzn.to/3wFtVU4,"Pack of 50, need one for the pulley mounted at the top of the vertical rail",$7.49,$7.49
+C-Clamp,1,No,https://amzn.to/3c4k5Et,Any small c-clamp will work,$12.98,$12.98
+Open Builds Low Profile Screws M5 x 8mm,1,No,https://openbuildspartstore.com/low-profile-screws-m5-10-pack-/?ref=_2E7m4SXRIy8t,"10 pack, 5 needed for mounting the LED holder and the end cap to the horizontal rail",$0.99,$0.99
+Open Builds 500mm Linear Rail,2,No,https://openbuildspartstore.com/v-slot-20x20-linear-rail/?ref=_2E7m4SXRIy8t,,$5.49,$10.98
+Open Builds 6mm Aluminum Spacer,1,No,https://openbuildspartstore.com/aluminum-spacers-10-pack/?ref=_2E7m4SXRIy8t,"10 pack, 4 used in mounting wheels to carriage",$3.39,$3.39
+Open Builds Xtreme Solid V Wheel Kit,6,No,https://openbuildspartstore.com/xtreme-solid-v-wheel-kit/?ref=_2E7m4SXRIy8t,,$6.99,$41.94
+Open Builds Low Profile Screws M5 x 25mm,1,No,https://openbuildspartstore.com/low-profile-screws-m5-10-pack-/?ref=_2E7m4SXRIy8t,"10 pack, 6 needed for mounting wheels to carriage",$1.39,$1.39
+Open Builds 6mm Eccentric Spacer,2,No,https://openbuildspartstore.com/eccentric-spacer/?ref=_2E7m4SXRIy8t,,$1.99,$3.98
+Open Builds Spring Loaded Tee Nuts,4,No,https://openbuildspartstore.com/spring-loaded-tee-nuts/?ref=_2E7m4SXRIy8t,Used to attach LED holder to horizontal rail,$1.29,$5.16
+GT2-2M Timing Belt,2,No,https://openbuildspartstore.com/gt2-2m-timing-belt-by-the-foot/?ref=_2E7m4SXRIy8t,"Sold by the foot, cut down to 16.5 inches",$2.49,$4.98
+Lead Shot Balls,1,No,https://amzn.to/3kHrHAE,Please wear gloves while handling and wash your hands afterwards,$24.99,$24.99
+Open Builds Linear Rail End Cap,1,No,https://openbuildspartstore.com/end-cap/?ref=_2E7m4SXRIy8t,Optional (can be 3D printed),$1.99,$1.99
+ULANZI L2 Bi-Color Light,1,No,https://amzn.to/3XTvSIA,Get two if you want 100% uptime,$36.99,$36.99
+10x5x2 Neodymium Magnets,1,No,https://amzn.to/3wZxsfU,Pack of 100,$7.99,$7.99
+Duramic Matte Black Filament,1,No,https://amzn.to/3HiAHnv,Use whatever you like but this is my personal favorite,$19.99,$19.99
+Right Angle USB C Adapter,1,No,https://amzn.to/3DqzcT7,Optional (only needed to make charging base),$10.95,$10.95
