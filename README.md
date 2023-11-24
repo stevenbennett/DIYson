@@ -3,4 +3,4 @@ Components for making the DIYson lamp. Learn more on [Youtube](https://www.youtu
 
 All designs are likely (probably guaranteed) to change. 3D models are updated regularly for education and experimentation but will almost certainly be updated, replaced, or removed in the future.
 
-Find us on Discord: https://discord.gg/vjqbcX5Kmf
+Find us on [Discord](https://discord.gg/B43ZVcBme4)
