@@ -20,9 +20,9 @@
 8. Either copy and paste the contents of [LED Control.py](DIYson/LED%20Control.py) or move the whole file onto the board, replacing the existing `.py` file.
 
 9. Ensure there are no errors by saving the `.py` file in the Mu editor with the serial console open.
-    
 <br>
-**More resources:**
+
+**More resources**
 
 [adafruit.com/adafruit-qt-py/circuitpython](https://learn.adafruit.com/adafruit-qt-py/circuitpython)  
 [circuitpython.org/libraries](https://circuitpython.org/libraries)
