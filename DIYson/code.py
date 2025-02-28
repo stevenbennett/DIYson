@@ -21,19 +21,23 @@ MAX_TEMP = 48
 NUM_SAMPLES = 10
 
 # VARIABLES
-max_16_bit_value = DEFAULT_MAX_16_BIT_VALUE
+max_dac_output = 50000 # adjust based on desired minimum LED output
 auto_brightness = False
 
 # CLASSES
 class Brightness:
+    
     def __init__(self, percentage):
         self.flat_percentage = min(max(percentage, 0), 100)
 
     def as_driver_output(self):
-        min_voltage = 0.3
-        max_voltage = 3.3
-        voltage_out = min_voltage + (self.flat_percentage / 100) * (max_voltage - min_voltage)
-        return int((voltage_out / 3.3) * max_16_bit_value)
+        if self.flat_percentage == 0:
+            return DEFAULT_MAX_16_BIT_VALUE
+        normalized_brightness = self.flat_percentage / 100 
+        scaled_brightness = 1 - (normalized_brightness ** 2)
+        dac_value = int(scaled_brightness * max_dac_output)
+        
+        return dac_value
 
 class AmbientBrightness:
     def __init__(self, light_sensor, min_value, max_value):
@@ -49,14 +53,22 @@ class AmbientBrightness:
             return self.get_weighted_ambient_brightness(self.light_sensor.value)
         return None
 
-# SET INITIAL BRIGHTNESS
-user_brightness = Brightness(STEP)
-output_brightness = Brightness(0)
+
 
 # INITIALIZE PINS
 dac_out = AnalogOut(board.A1)
 light_sensor = AnalogIn(board.SCL)
 temp_sensor = AnalogIn(board.RX)
+
+
+
+# POWER STATE (OFF BY DEFAULT)
+power = False
+dac_out.value = DEFAULT_MAX_16_BIT_VALUE
+
+# SET INITIAL BRIGHTNESS
+user_brightness = Brightness(STEP)
+output_brightness = Brightness(0)
 
 # BUTTONS
 power_button_raw = TouchIn(board.A2)
@@ -71,9 +83,6 @@ power_button_raw.threshold = 20000
 increase_button_raw.threshold = 20000
 decrease_button_raw.threshold = 20000
 
-# POWER STATE (OFF BY DEFAULT)
-power = False
-dac_out.value = 0
 
 def get_temperature():
     total = sum(temp_sensor.value for _ in range(NUM_SAMPLES))
@@ -85,22 +94,27 @@ def set_output_brightness(target_brightness, duration=FADE_DURATION):
     global output_brightness
     step_duration = duration / FADE_STEPS
 
-    # debugging
-    # print(f"\nTarget Brightness: {target_brightness.flat_percentage}%")
-
     for step in range(FADE_STEPS):
         intermediate_brightness = output_brightness.flat_percentage + (
             (target_brightness.flat_percentage - output_brightness.flat_percentage) * step / FADE_STEPS)
+        
         dac_value = Brightness(intermediate_brightness).as_driver_output()
+
+        if target_brightness.flat_percentage == 0:
+            dac_value = int(dac_value + (DEFAULT_MAX_16_BIT_VALUE - dac_value) * (step / FADE_STEPS))
+
         dac_out.value = dac_value
-
-        # debugging
-        # voltage_out = (dac_value / 65535) * 3.3
-        # print(f"Step {step + 1}/{FADE_STEPS} | Brightness: {intermediate_brightness:.2f}% | DAC Value: {dac_value} | Voltage Output: {voltage_out:.3f}V")
-
         time.sleep(step_duration)
 
     output_brightness = target_brightness
+    final_dac_value = DEFAULT_MAX_16_BIT_VALUE if output_brightness.flat_percentage == 0 else output_brightness.as_driver_output()
+    dac_out.value = final_dac_value 
+
+    # debugging
+    # print(f"Current brightness: {output_brightness.flat_percentage}% | DAC Output: {final_dac_value}")
+
+    if output_brightness.flat_percentage == 0:
+        print(f"DEBUG: LED should be OFF | DAC Value: {final_dac_value}")
 
 def handle_auto_brightness():
     global user_brightness
@@ -119,8 +133,8 @@ def handle_auto_brightness():
 def handle_power_button():
     global power
     power_button.update()
-
-    if power_button.fell:
+    
+    if power_button.rose:
         if power:
             print("Turning off")
             set_output_brightness(Brightness(0))
@@ -137,7 +151,7 @@ def handle_increase_button():
     global user_brightness
     increase_button.update()
 
-    if increase_button.fell:
+    if increase_button.rose:
         print("Increasing brightness")
         user_brightness = Brightness(min(user_brightness.flat_percentage + STEP, MAX_BRIGHTNESS))
         set_output_brightness(user_brightness)
@@ -146,7 +160,7 @@ def handle_decrease_button():
     global user_brightness
     decrease_button.update()
 
-    if decrease_button.fell:
+    if decrease_button.rose:
         print("Decreasing brightness")
         user_brightness = Brightness(max(user_brightness.flat_percentage - STEP, MIN_BRIGHTNESS))
         set_output_brightness(user_brightness)
@@ -177,7 +191,7 @@ def run():
             handle_decrease_button()
             if auto_brightness:
                 handle_auto_brightness()
-            check_temperature()
+            # check_temperature()
         time.sleep(0.01)
 
 run()
